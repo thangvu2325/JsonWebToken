@@ -2,7 +2,7 @@ const express = require('express')
 const morgan = require('morgan')
 const {engine} = require('express-handlebars');
 const cookieParser = require("cookie-parser");
-
+const serverless = require("serverless-http")
 // const mongoose = require('mongoose');
 const db = require('./config/db')
 const cors = require("cors");
@@ -17,11 +17,11 @@ const app = express()
 app.use(cookieParser());
 
 const port = 5000
-// app.use(cors());
-app.use(cors({
-  origin: 'http://localhost:3000',
-  credentials: true
-}));
+app.use(cors());
+// app.use(cors({
+//   origin: 'http://localhost:3000',
+//   credentials: true
+// }));
 const route = require('./routes');
 
 // const { connect } = require('http2');
@@ -78,3 +78,5 @@ async function initial() {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
+module.exports = app;
+module.exports.handler = serverless(app);
