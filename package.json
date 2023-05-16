@@ -7,7 +7,7 @@
     "start": "nodemon --inspect src/index.js",
     "watch": "node-sass --watch src/resources/scss -o src/public/css",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "netlify deploy --prod"
+    "build": "npm install && npm run start"
   },
   "repository": {
     "type": "git",
@@ -45,5 +45,5 @@
     "morgan": "^1.10.0",
     "node-sass": "^8.0.0",
     "nodemon": "^2.0.22"
-  }
+  }   
 }
