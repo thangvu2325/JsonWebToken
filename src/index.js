@@ -2,7 +2,6 @@ const express = require('express')
 const morgan = require('morgan')
 const {engine} = require('express-handlebars');
 const cookieParser = require("cookie-parser");
-const serverless = require("serverless-http")
 // const mongoose = require('mongoose');
 const db = require('./config/db')
 const cors = require("cors");
@@ -78,5 +77,3 @@ async function initial() {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
-module.exports = app;
-module.exports.handler = serverless(app);
