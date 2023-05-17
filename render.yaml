@@ -1,8 +1,10 @@
 services:
   - type: web
     name: BackendNodejs
-    env: nodejs
-    buildCommand: npm run build
+    env: node
+    buildCommand: npm install && npm run build
     startCommand: npm start
-    nodeVersion: 16.18.0
-    staticPublishPath: /dist
+    # Sử dụng cổng mặc định 10000 hoặc cổng nào bạn muốn dùng
+    envVars:
+      - key: PORT
+        value: 10000
