@@ -6,6 +6,7 @@ const cookieParser = require("cookie-parser");
 const db = require('./config/db')
 const cors = require("cors");
 
+require('dotenv').config();
 
 const Role = require('./app/models/Role')
 // Connect to database
@@ -15,7 +16,7 @@ const path = require('path');
 const app = express()
 app.use(cookieParser());
 
-const port = 5000
+const port = process.env.PORT || 5000;
 app.use(cors());
 // app.use(cors({
 //   origin: 'http://localhost:3000',
@@ -47,7 +48,6 @@ app.engine('hbs', engine({
 }));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname,'resources/views'))
-require('dotenv').config();
 
 // Route init
 route(app);
@@ -75,6 +75,6 @@ async function initial() {
   }
 }
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Example app listening on port ${port}`);
+});
