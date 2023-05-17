@@ -2,7 +2,7 @@ services:
   - type: web
     name: BackendNodejs
     env: node
-    buildCommand: npm install && npm run build
+    buildCommand: npm install
     startCommand: npm start
     # Sử dụng cổng mặc định 10000 hoặc cổng nào bạn muốn dùng
     envVars:
