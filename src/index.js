@@ -44,8 +44,11 @@ app.engine('hbs', engine({
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname,'resources/views'))
 
+const http = require('http');
+const server = http.createServer(app);
 // Route init
 route(app);
+
 async function initial() {
   try {
     const count = await Role.estimatedDocumentCount();
