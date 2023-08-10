@@ -1,11 +1,9 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const ObjectId = Schema.ObjectId;
-
-
-const User = new Schema({
-  username: String,
+const User = new Schema(
+  {
+    username: String,
     email: {
       type: String,
       require: true,
@@ -25,9 +23,14 @@ const User = new Schema({
       type: String,
       max: 255,
     },
-    inform: {
-      type: String,
-      max: 255,
+    gateway: {
+      name: {
+        type: String,
+      },
+      nodes: [{ type: mongoose.Schema.Types.ObjectId, ref: "NodesList" }],
+    },
+    connect: {
+      type: Boolean,
     },
     roles: [
       {
@@ -35,9 +38,17 @@ const User = new Schema({
         ref: "Role",
       },
     ],
-
-},
+    inbox: {
+      type: Array,
+    },
+    usersManager: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "UserManager",
+      },
+    ],
+  },
   { timestamps: true }
 );
 
-module.exports = mongoose.model('User',User)
+module.exports = mongoose.model("User", User);

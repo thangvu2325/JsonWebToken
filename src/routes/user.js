@@ -1,15 +1,9 @@
 const userController = require("../app/controllers/UserController");
-const {
-  verifyToken,
-  verifyTokenAndAdmin,
-  verifyTokenAndUserAuthorization,
-} = require("../app/controllers/verifyToken");
 
 const router = require("express").Router();
-//GET ALL USERS
-router.get("/", verifyToken, userController.getAllUsers);
 
-//DELETE USER
-router.delete("/:id", verifyTokenAndUserAuthorization, userController.deleteUser);
+// router.get("/register", authController.register);
+// router.get("/login", authController.login);
+// router.post("/login", authController.handleLogin);
 
 module.exports = router;
